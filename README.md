@@ -52,6 +52,6 @@ For this option, you are requested to enter the following:
 The program will calculate and print the bond repayment.
 
 ## Credits
-Shingai Dzinotyiweyi [GitHub Profile](https://https://github.com/C-CREAD/)
+Shingai Dzinotyiweyi [GitHub Profile](https://github.com/C-CREAD)
 
 [Repository Link:](https://github.com/C-CREAD/financial_calculator) 
