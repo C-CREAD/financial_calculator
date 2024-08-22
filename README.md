@@ -33,7 +33,7 @@ To install this project on your computer, you can run the following commands:
 
 ## Usage
 Once the project is installed, a menu will be displayed showing the following options between **investment** and **bond**
-![Screenshot](images/1 - menu.png)
+![Screenshot](images/1-menu.png)
 
 ### Investment
 For this option, you are requested to enter the following:
@@ -42,9 +42,9 @@ For this option, you are requested to enter the following:
 3. Enter the number of years to invest as an integer.
 4. Select between simple or compound interest:
    - For simple interest, the program will calculate and print the investment through simple interest.
-     ![Screenshot](images/2.1 - investment.png)
+     ![Screenshot](images/2_1-investment.png)
    - For compound interest, the program will calculate and print the investment through compound interest.
-     ![Screenshot](images/2.2 - investment.png)
+     ![Screenshot](images/2_2-investment.png)
 
 ### Bond
 For this option, you are requested to enter the following:
@@ -53,11 +53,11 @@ For this option, you are requested to enter the following:
 3. Enter the number of months to repay the bond as an integer.
 
 The program will calculate and print the bond repayment.
-![Screenshot](images/3 - bond.png)
+![Screenshot](images/3-bond.png)
 
 ### Exit Program
 To exit the program, enter **1**. Otherwise, **enter any key** to run the program again.
-![Screenshot](images/4 - exit.png)
+![Screenshot](images/4-exit.png)
 
 ## Credits
 Shingai Dzinotyiweyi [GitHub Profile](https://github.com/C-CREAD)
