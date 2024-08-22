@@ -19,17 +19,17 @@ To install this project on your computer, you can run the following commands:
 1. Create a directory (folder) where you wish to install the project.
 2. Open your terminal/command prompt and navigate to the selected directory
 3. In this directory, type the following command:
-     '''sh
+     ```sh
      git clone https://github.com/C-CREAD/financial_calculator
-     '''
+     ```
 4. Navigate to the project folder inside the directory from above:
-     '''sh
+     ```sh
      cd financial_calculator
-     '''
+     ```
 5. Run the program using the following command:
-     '''sh
+     ```sh
      python financial_calculator.py 
-     '''
+     ```
 
 ## Usage
 Once the project is installed, a menu will be displayed showing the following options between **investment** and **bond**
