@@ -57,6 +57,7 @@ The program will calculate and print the bond repayment.
 
 ### Exit Program
 To exit the program, enter **1**. Otherwise, **enter any key** to run the program again.
+
 ![Screenshot](images/4-exit.png)
 
 ## Credits
