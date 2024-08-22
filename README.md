@@ -1,10 +1,10 @@
 # Financial Calculator
 
 ## Table of Contents
-- [Description]
-- [Intallation]
-- [Usage]
-- [Credits]
+- [Description](#description)
+- [Intallation](#installation)
+- [Usage](#usage)
+- [Credits](#credits)
 
 
 ## Description
@@ -53,4 +53,5 @@ The program will calculate and print the bond repayment.
 
 ## Credits
 Shingai Dzinotyiweyi [GitHub Profile](https://https://github.com/C-CREAD/)
+
 [Repository Link:](https://github.com/C-CREAD/financial_calculator) 
