@@ -1,4 +1,4 @@
-# Financial Calculator
+# Financial Calculator (Terminal Version)
 
 ## Table of Contents
 - [Description](#description)
@@ -8,7 +8,7 @@
 
 
 ## Description
-This is a Python Capstone project illustrating a financial calculator. The financial calculator will showcase a menu for the following two operations:
+This is a Python Capstone project illustrating a financial calculator from the terminal. The financial calculator will showcase a menu for the following two operations:
 1. Investment - Calculates the user's potential investment through simple or compound interest over a certain period.
 2. Bond - Calculates the user's potential bond repayment of a house over a certain period.
 
