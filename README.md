@@ -71,4 +71,4 @@ For this option, you are requested to enter the following:
 ## Credits
 Shingai Dzinotyiweyi [GitHub Profile](https://github.com/C-CREAD)
 
-[Repository Link:](https://github.com/C-CREAD/financial_calculator/version_flask) 
+[Repository Link](https://github.com/C-CREAD/financial_calculator/tree/version_flask) 
