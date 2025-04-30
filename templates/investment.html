@@ -1,0 +1,131 @@
+{% extends "finance.html" %}
+
+{% block title %}Investment Calculator{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="py-5 text-center">
+            <h1 class="display-4 mb-3"><i class="bi bi-graph-up-arrow text-success"></i> Investment Calculator</h1>
+            <p class="lead text-muted">Calculate your potential investment returns with simple and compound interest</p>
+            <div class="alert alert-info col-md-8 mx-auto">
+                <i class="bi bi-info-circle-fill me-2"></i>Enter your investment details below to see projected returns.
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <!-- Investment Calculator -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0"><i class="bi bi-calculator me-2"></i>Input Values</h5>
+                    </div>
+                    <div class="card-body">
+                        <form class="needs-validation" method="POST">
+                            <!-- Deposit -->
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Deposit Amount</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light"><i class="bi bi-cash-stack text-success"></i></span>
+                                    <input name="deposit" type="text" class="form-control" placeholder="e.g. 20000" required>
+                                    <span class="input-group-text">R</span>
+                                    <div class="invalid-feedback">Please enter a deposit amount.</div>
+                                </div>
+                            </div>
+
+                            <!-- Interest Rate -->
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Interest Rate</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light"><i class="bi bi-percent text-success"></i></span>
+                                    <input name="interest" type="text" class="form-control" placeholder="e.g. 15" required>
+                                    <span class="input-group-text">%</span>
+                                    <div class="invalid-feedback">Please enter an interest rate.</div>
+                                </div>
+                            </div>
+
+                            <!-- Period -->
+                            <div class="mb-4">
+                                <label class="form-label fw-bold">Investment Period</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light"><i class="bi bi-calendar-range text-success"></i></span>
+                                    <input name="period" type="text" class="form-control" placeholder="e.g. 15" required>
+                                    <span class="input-group-text">years</span>
+                                    <div class="invalid-feedback">Please enter investment period.</div>
+                                </div>
+                            </div>
+
+                            <button class="btn btn-success w-100 py-2">
+                                <i class="bi bi-calculator-fill me-2"></i>Calculate Returns
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Investment Results-->
+            {% if request.method == "POST" %}
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card border-0 shadow-sm h-100" id="simple" style="border-top: 4px solid #27ae60;">
+                        <div class="card-header bg-light">
+                            <h5 class="mb-0"><i class="bi bi-bar-chart-line-fill me-2 text-success"></i>Simple Interest</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Deposit
+                                    <span class="badge bg-light text-dark">R{{ content[0] }}</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Interest Rate
+                                    <span class="badge bg-light text-dark">{{ content[1] * 100 }}%</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Investment Period
+                                    <span class="badge bg-light text-dark">{{ content[2] }} years</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center bg-light">
+                                    <strong>Total Return</strong>
+                                    <span class="badge bg-success">R{{ content[3] }}</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card border-0 shadow-sm h-100" id="compound" style="border-top: 4px solid #2980b9;">
+                        <div class="card-header bg-light">
+                            <h5 class="mb-0"><i class="bi bi-graph-up-arrow me-2 text-primary"></i>Compound Interest</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Deposit
+                                    <span class="badge bg-light text-dark">R{{ content[0] }}</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Interest Rate
+                                    <span class="badge bg-light text-dark">{{ content[1] * 100 }}%</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Investment Period
+                                    <span class="badge bg-light text-dark">{{ content[2] }} years</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center bg-light">
+                                    <strong>Total Return</strong>
+                                    <span class="badge bg-primary">R{{ content[4] }}</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="/home" class="btn btn-outline-secondary">
+                <i class="bi bi-arrow-left-circle me-2"></i>Return to Homepage
+            </a>
+        </div>
+    </div>
+{% endblock %}
