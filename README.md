@@ -12,7 +12,7 @@ This is a Python Capstone project illustrating a financial calculator from the t
 1. Investment - Calculates the user's potential investment through simple or compound interest over a certain period.
 2. Bond - Calculates the user's potential bond repayment of a house over a certain period.
 
-The user will have the option of selecting either investment or bond, where the program will request the user for certain inputs to return the corresponding results. 
+The user will have the option of selecting either investment or bond, where the program will request the user for certain inputs to return the corresponding results. To access the Flask Web Framework version of this project, [click here.](https://github.com/C-CREAD/financial_calculator/tree/version_flask)
 
 ## Installation 
 To install this project on your computer, you can run the following commands:
@@ -63,4 +63,4 @@ To exit the program, enter **1**. Otherwise, **enter any key** to run the progra
 ## Credits
 Shingai Dzinotyiweyi [GitHub Profile](https://github.com/C-CREAD)
 
-[Repository Link:](https://github.com/C-CREAD/financial_calculator) 
+[Repository Link](https://github.com/C-CREAD/financial_calculator) 
