@@ -27,11 +27,22 @@ To install this project on your computer, you can run the following commands:
      ```sh
      cd financial_calculator
      ```
-5. Run the program using the following command:
+
+5. Create a virtual environment:
+     ```sh
+     python -m venv .venv
+     ```
+
+6. Install the required packages:
+     ```sh
+     pip install -r requirements.txt
+     ```
+
+7. Run the program using the following command:
      ```sh
      python financial_calculator.py 
      ```
-6. Access the following link shown in your terminal:
+8. Access the following link shown in your terminal:
      ```sh
      http://127.0.0.1:5000
      ```
