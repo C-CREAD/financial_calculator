@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Calculator</title>
+
+    <!-- Bootstrap CSS (Dark Theme) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-dark: #2c3e50;
+            --primary-light: #3498db;
+            --success-dark: #27ae60;
+            --info-dark: #2980b9;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 6px 10px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            margin: 10px;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.12);
+        }
+
+        .btn {
+            border-radius: 50px;
+            padding: 8px 24px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .lead {
+            font-size: 1.1rem;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+        }
+        .container {
+            max-width: 900px;
+            margin-top: 30px;
+        }
+        .card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+        }
+        .card-header {
+            color: white;
+            border-radius: 12px 12px 0 0;
+            padding: 25px;
+            border: none;
+        }
+        .card-header h4 {
+            margin: 0;
+            font-weight: 600;
+        }
+        .card-body {
+            padding: 30px;
+        }
+        .form-label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        .form-control, .form-select {
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 10px 15px;
+            transition: border-color 0.3s;
+        }
+        .form-control:focus, .form-select:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        }
+        .home-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .home-container h1 {
+            color: #000000FF;
+            font-weight: 700;
+            margin-bottom: 20px;
+            font-size: 3rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        .home-container p {
+            color: #f8f9fa;
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+        }
+        .button-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .button-group .btn {
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            min-width: 250px;
+        }
+        .btn-back {
+            background: #DD9D3FB2;
+            color: #333333;
+            border: 2px solid white;
+            margin-bottom: 30px;
+        }
+        .btn-back:hover {
+            background: #DD9D3FB2;
+            color: white;
+        }
+        .result-box {
+            background: linear-gradient(135deg, #f5f7fa 0%, #f0f1f5 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 30px;
+            display: none;
+        }
+        .result-box.show {
+            display: block;
+            animation: slideIn 0.3s ease-in;
+        }
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .result-box h5 {
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .result-item:last-child {
+            border-bottom: none;
+        }
+        .result-label {
+            font-weight: 600;
+            color: #333;
+        }
+        .result-value.investment {
+            font-weight: 700;
+            color: #136018;
+            font-size: 1.1rem;
+        }
+        .result-value.bond {
+            font-weight: 700;
+            color: #0081ff;
+            font-size: 1.1rem;
+        }
+        .result-item.investment .result-label {
+            color: #136018;
+            font-size: 1.1rem;
+        }
+        .result-item.bond .result-label {
+            color: #0081ff;
+            font-size: 1.1rem;
+        }
+        .result-item.highlight .result-value {
+            color: #764ba2;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+        .page {
+            display: none;
+        }
+        .page.active {
+            display: block;
+        }
+        .breadcrumb-text {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Home Page -->
+    <div id="homePage" class="page active">
+        <div class="container home-container">
+            <h1><i class="bi bi-calculator me-2"></i> Financial Calculator </h1>
+            <p class="lead mb-5" style="color: #000000;">Calculate your investments and bond repayments with ease. Made with FastAPI</p>
+            <div class="button-group">
+
+                <button class="btn btn-light btn-lg" onclick="goToPage('investmentPage')">
+                    <i class="bi bi-graph-up-arrow display-4 mb-3 text-success" style="font-size: 25px;"></i>
+                    Investment Calculator
+                </button>
+                <button class="btn btn-light btn-lg" onclick="goToPage('bondPage')">
+                    <i class="bi bi-house-gear display-4 mb-3 text-primary" style="font-size: 25px;"></i>
+                    Bond Calculator
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Investment Page -->
+    <div id="investmentPage" class="page">
+        <div class="container">
+            <button class="btn btn-back btn-sm" onclick="goToPage('homePage')">← Back to Home</button>
+
+            <div class="card">
+                <div class="card-header" style="background: linear-gradient(135deg, #a5e6b2 0%, #136018 100%);">
+                    <h4><i class="bi bi-graph-up-arrow display-4 mb-3 text-success" style="font-size: 25px;"></i> Investment Calculator</h4>
+                    <small>Calculate your investment returns with simple or compound interest</small>
+                </div>
+                <div class="card-body">
+                    <form id="investmentForm">
+                        <div class="mb-3">
+                            <label for="deposit" class="form-label">Deposit Amount ($)</label>
+                            <input type="number" class="form-control" id="deposit" name="deposit" step="0.01" required placeholder="e.g., 1000.00">
+                        </div>
+                        <div class="mb-3">
+                            <label for="investmentRate" class="form-label">Interest Rate (%)</label>
+                            <input type="number" class="form-control" id="investmentRate" name="interest" step="0.01" required placeholder="e.g., 5.5">
+                        </div>
+                        <div class="mb-3">
+                            <label for="investmentPeriod" class="form-label">Number of Years</label>
+                            <input type="number" class="form-control" id="investmentPeriod" name="period" step="1" required placeholder="e.g., 10">
+                        </div>
+                        <button type="submit" class="btn btn-success btn-lg w-100">Calculate Returns</button>
+                    </form>
+
+                    <div id="investmentResult" class="result-box" style="border-left: 5px solid #3adb34;">
+                        <h5 style="color: #136018">Investment Results</h5>
+                        <div class="result-item">
+                            <span class="result-label">Initial Deposit:</span>
+                            <span class="result-value investment" id="resultDeposit"></span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Interest Rate:</span>
+                            <span class="result-value investment" id="resultRate"></span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Period:</span>
+                            <span class="result-value investment" id="resultPeriod"></span>
+                        </div>
+                        <div class="result-item highlight">
+                            <span class="result-label">Simple Interest Return:</span>
+                            <span class="result-value" id="resultSimple"></span>
+                        </div>
+                        <div class="result-item highlight">
+                            <span class="result-label">Compound Interest Return:</span>
+                            <span class="result-value" id="resultCompound"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bond Page -->
+    <div id="bondPage" class="page">
+        <div class="container">
+            <button class="btn btn-back btn-sm" onclick="goToPage('homePage')">← Back to Home</button>
+
+            <div class="card">
+                <div class="card-header" style="background: linear-gradient(135deg, #a5c7e6 0%, #0081ff 100%);">
+                    <h4><i class="bi bi-house-gear display-4 mb-3 text-primary" style="font-size: 25px;"></i> Bond/Mortgage Calculator</h4>
+                    <small>Calculate your monthly bond repayment</small>
+                </div>
+                <div class="card-body">
+                    <form id="bondForm">
+                        <div class="mb-3">
+                            <label for="presentValue" class="form-label">Present Value of House ($)</label>
+                            <input type="number" class="form-control" id="presentValue" name="present-value" step="0.01" required placeholder="e.g., 300000.00">
+                        </div>
+                        <div class="mb-3">
+                            <label for="bondRate" class="form-label">Interest Rate (%)</label>
+                            <input type="number" class="form-control" id="bondRate" name="interest" step="0.01" required placeholder="e.g., 7.5">
+                        </div>
+                        <div class="mb-3">
+                            <label for="bondPeriod" class="form-label">Number of Months</label>
+                            <input type="number" class="form-control" id="bondPeriod" name="period" step="1" required placeholder="e.g., 360 (30 years)">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg w-100">Calculate Repayment</button>
+                    </form>
+
+                    <div id="bondResult" class="result-box" style="border-left: 5px solid #0081ff">
+                        <h5 style="color: #0081ff">Bond Repayment Results</h5>
+                        <div class="result-item">
+                            <span class="result-label">House Value:</span>
+                            <span class="result-value bond" id="resultValue"></span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Interest Rate:</span>
+                            <span class="result-value bond" id="resultBondRate"></span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Loan Period:</span>
+                            <span class="result-value bond" id="resultMonths"></span>
+                        </div>
+                        <div class="result-item highlight">
+                            <span class="result-label">Monthly Repayment:</span>
+                            <span class="result-value" id="resultMonthly"></span>
+                        </div>
+                        <div class="result-item highlight">
+                            <span class="result-label">Total Repayment:</span>
+                            <span class="result-value" id="resultTotalRepayment"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function goToPage(pageName) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            // Show selected page
+            document.getElementById(pageName).classList.add('active');
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        document.getElementById('investmentForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const formData = {
+                deposit: parseFloat(document.getElementById('deposit').value),
+                interest_rate: parseFloat(document.getElementById('investmentRate').value),
+                years: parseInt(document.getElementById('investmentPeriod').value)
+            };
+
+            try {
+                const response = await fetch('/api/calculate-investment', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                if (!response.ok) throw new Error('Calculation failed');
+
+                const data = await response.json();
+
+                document.getElementById('resultDeposit').textContent = `$${data.deposit.toFixed(2)}`;
+                document.getElementById('resultRate').textContent = `${data.interest_rate}%`;
+                document.getElementById('resultPeriod').textContent = `${data.years} year(s)`;
+                document.getElementById('resultSimple').textContent = `$${data.simple_interest.toFixed(2)}`;
+                document.getElementById('resultCompound').textContent = `$${data.compound_interest.toFixed(2)}`;
+
+                document.getElementById('investmentResult').classList.add('show');
+            } catch (error) {
+                alert('Error calculating investment. Please check your inputs.');
+                console.error('Error:', error);
+            }
+        });
+
+        document.getElementById('bondForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const formData = {
+                present_value: parseFloat(document.getElementById('presentValue').value),
+                interest_rate: parseFloat(document.getElementById('bondRate').value),
+                months: parseInt(document.getElementById('bondPeriod').value)
+            };
+
+            try {
+                const response = await fetch('/api/calculate-bond', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                if (!response.ok) throw new Error('Calculation failed');
+
+                const data = await response.json();
+
+                document.getElementById('resultValue').textContent = `$${data.present_value.toFixed(2)}`;
+                document.getElementById('resultBondRate').textContent = `${data.interest_rate}%`;
+                document.getElementById('resultMonths').textContent = `${data.months} months (${(data.months / 12).toFixed(1)} years)`;
+                document.getElementById('resultMonthly').textContent = `$${data.monthly_repayment.toFixed(2)}`;
+                document.getElementById('resultTotalRepayment').textContent = `$${data.total_repayment.toFixed(2)}`;
+
+                document.getElementById('bondResult').classList.add('show');
+            } catch (error) {
+                alert('Error calculating bond. Please check your inputs.');
+                console.error('Error:', error);
+            }
+        });
+    </script>
+</body>
+</html>
