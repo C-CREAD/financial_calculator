@@ -8,12 +8,13 @@
 
 
 ## Description
-This is the Flask version of the terminal capstone project illustrating a financial calculator. This small project is showcased using the Flask Web Framework, allowing users to calculate their investments and bonds via standard HTML and Bootstrap CSS as the front end and Flask with Python as the back end. If you would like to see the terminal version of this project, [click here.](https://github.com/C-CREAD/financial_calculator/tree/main)
-
-As mentioned in the main branch, you will have access to the following options: 
+This is the Flask version of the terminal capstone project illustrating a financial calculator. This small project is showcased using the Flask Web Framework, allowing users to calculate their investments and bonds via standard HTML and Bootstrap CSS as the front end and Flask with Python as the back end. As mentioned in the main branch, you will have access to the following options: 
 1. Investment - Calculates the user's potential investment through simple or compound interest over a certain period.
 2. Bond - Calculates the user's potential bond repayment of a house over a certain period.
 
+To visit other versions of this project, click on the following links:
+- [FastAPI Version](https://github.com/C-CREAD/financial_calculator/tree/version_fastapi)
+- [Terminal Version](https://github.com/C-CREAD/financial_calculator/tree/main)
 
 ## Installation 
 To install this project on your computer, you can run the following commands:
