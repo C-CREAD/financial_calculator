@@ -12,6 +12,7 @@ This is the FastAPI version of the terminal capstone project illustrating a fina
 1. Investment - Calculates the user's potential investment through simple or compound interest over a certain period.
 2. Bond - Calculates the user's potential bond repayment of a house over a certain period.
 
+To visit other versions of this project, click on the following links:
 - [Flask Version](https://github.com/C-CREAD/financial_calculator/tree/version_flask)
 - [Terminal Version](https://github.com/C-CREAD/financial_calculator/tree/main)
 
